@@ -4,6 +4,10 @@
 vue add vuetify
 ```
 
+```
+vue add router
+```
+
 ## Project setup
 ```
 npm install
