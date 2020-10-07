@@ -1,11 +1,16 @@
 # vuetify-dash
 
+# Use Packages
 ```
 vue add vuetify
 ```
 
 ```
 vue add router
+```
+
+```
+npm i echarts-vue
 ```
 
 ## Project setup
