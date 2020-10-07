@@ -1,5 +1,9 @@
 # vuetify-dash
 
+```
+vue add vuetify
+```
+
 ## Project setup
 ```
 npm install
