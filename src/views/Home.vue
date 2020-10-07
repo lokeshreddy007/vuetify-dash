@@ -1,17 +1,157 @@
 <template>
-  <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div>
+        <h1 class="text-center">Home</h1>
+        <v-container justify>
+            <v-row>
+                <v-col>
+                    <BarChart />
+                </v-col>
+                <v-col>
+                    <LineChart />
+                </v-col>
+            </v-row>
+            <v-row>
+                <v-col>
+                    <PieChart />
+                </v-col>
+                <v-col>
+                    <v-data-table :headers="headers" :items="desserts" :items-per-page="5" class="elevation-1" @click:row="selectRow"></v-data-table>
+                    <v-snackbar v-model="snackbar">
+                        You Have selected {{ currentItem }}
+                        <template v-slot:action="{ attrs }">
+                            <v-btn color="pink" text v-bind="attrs" @click="snackbar = false">
+                                Close
+                            </v-btn>
+                        </template>
+                    </v-snackbar>
+                </v-col>
+            </v-row>
+        </v-container>
+        <!-- <ScatterChart /> -->
+        <!-- <Card /> -->
+    </div>
 </template>
-
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import BarChart from '../components/charts/BarChart.vue'
+import LineChart from '../components/charts/LineChart.vue'
+import PieChart from '../components/charts/PieChart.vue'
+// import ScatterChart from '../components/charts/ScatterChart.vue'
+// import Card from '../components/Card.vue'
+
 
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
+
+    data() {
+        return {
+            snackbar: false,
+            currentItem: '',
+            headers: [{
+                    text: 'Dessert (100g serving)',
+                    align: 'start',
+                    sortable: false,
+                    value: 'name',
+                },
+                { text: 'Calories', value: 'calories' },
+                { text: 'Fat (g)', value: 'fat' },
+                { text: 'Carbs (g)', value: 'carbs' },
+                { text: 'Protein (g)', value: 'protein' },
+                { text: 'Iron (%)', value: 'iron' },
+            ],
+            desserts: [{
+                    name: 'Frozen Yogurt',
+                    calories: 159,
+                    fat: 6.0,
+                    carbs: 24,
+                    protein: 4.0,
+                    iron: '1%',
+                },
+                {
+                    name: 'Ice cream sandwich',
+                    calories: 237,
+                    fat: 9.0,
+                    carbs: 37,
+                    protein: 4.3,
+                    iron: '1%',
+                },
+                {
+                    name: 'Eclair',
+                    calories: 262,
+                    fat: 16.0,
+                    carbs: 23,
+                    protein: 6.0,
+                    iron: '7%',
+                },
+                {
+                    name: 'Cupcake',
+                    calories: 305,
+                    fat: 3.7,
+                    carbs: 67,
+                    protein: 4.3,
+                    iron: '8%',
+                },
+                {
+                    name: 'Gingerbread',
+                    calories: 356,
+                    fat: 16.0,
+                    carbs: 49,
+                    protein: 3.9,
+                    iron: '16%',
+                },
+                {
+                    name: 'Jelly bean',
+                    calories: 375,
+                    fat: 0.0,
+                    carbs: 94,
+                    protein: 0.0,
+                    iron: '0%',
+                },
+                {
+                    name: 'Lollipop',
+                    calories: 392,
+                    fat: 0.2,
+                    carbs: 98,
+                    protein: 0,
+                    iron: '2%',
+                },
+                {
+                    name: 'Honeycomb',
+                    calories: 408,
+                    fat: 3.2,
+                    carbs: 87,
+                    protein: 6.5,
+                    iron: '45%',
+                },
+                {
+                    name: 'Donut',
+                    calories: 452,
+                    fat: 25.0,
+                    carbs: 51,
+                    protein: 4.9,
+                    iron: '22%',
+                },
+                {
+                    name: 'KitKat',
+                    calories: 518,
+                    fat: 26.0,
+                    carbs: 65,
+                    protein: 7,
+                    iron: '6%',
+                },
+            ],
+        }
+    },
+    methods: {
+        selectRow(event) {
+            this.snackbar = true
+            this.currentItem = event.name
+        }
+    },
+    components: {
+        BarChart,
+        LineChart,
+        PieChart,
+        // ScatterChart,
+        // Card
+    }
 }
 </script>

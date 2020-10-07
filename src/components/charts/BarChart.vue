@@ -5,65 +5,35 @@
 </template>
 <script>
 export default {
-    data() {
-        return {
-            option: {
-                title: {
-                    text: this.title,
-                    textStyleColor: 'whilte'
-                },
-                color: ['#97BF0E'],
-                tooltip: {},
-                grid: {
-                    bottom: 90
-                },
-                dataZoom: [{
-                        show: true,
-                        start: 25,
-                        end: 50,
-                    },
-                    {
-                        type: 'inside',
-                        start: 94,
-                        end: 100
-                    },
-                    {
-                        show: true,
-                        yAxisIndex: 0,
-                        filterMode: 'empty',
-                        width: 30,
-                        height: '80%',
-                        showDataShadow: false,
-                        left: '93%'
-                    }
-                ],
-                legend: {
-                    data:[this.title.split(" ").join("")]
-                },
-                xAxis: {
-                    data:  this.date
-                },
-                yAxis: {},
-                series: [{
-                    name: this.title.split(" ").join(""),
-                    type: 'bar',
-                    data: this.sum
-                }]
+  data () {
+    return {
+      option: {
+            title: {
+                text: 'Products'
             },
-            events: {
-                click: this.click
-            }
+            tooltip: {},
+            legend: {
+                data:['Sales']
+            },
+            xAxis: {
+                data: ['shirt','cardign','chiffon shirt','pants','heels','socks']
+            },
+            yAxis: {},
+            series: [{
+                name: 'Sales',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        },
+        events: {
+            click: this.click
         }
-    },
-    methods: {
-        click(data) {
-            console.log(data)
-        }
-    },
-    props: {
-        date: Array,
-        sum: Array,
-        title: String
     }
+  },
+  methods: {
+      click (data) {
+          console.log(data)
+      }
+  }
 }
 </script>

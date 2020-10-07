@@ -1,17 +1,17 @@
 <template>
     <v-app>
         <v-app-bar app color="primary" dark>
-            <v-toolbar-titile>
+            <v-toolbar-title>
                 Vuetify-Dash
-            </v-toolbar-titile>
+            </v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn v-for="link in links" :key="`${link.label}-header-link`" text rounded :to="link.url">
                 {{link.label}}
             </v-btn>
         </v-app-bar>
-        <v-content>
+        <v-main>
             <router-view></router-view>
-        </v-content>
+        </v-main>
         <v-footer color="primary lighten-1" padless>
             <v-row justify="center" no-gutters>
                 <v-btn v-for="link in links" :key="`${link.label}-footer-link`" color="white" text rounded class="my-2" :to="link.url">

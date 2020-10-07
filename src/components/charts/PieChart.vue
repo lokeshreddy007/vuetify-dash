@@ -9,41 +9,42 @@ export default {
     data() {
         return {
             option: {
-                title: {
-                    text: this.title,
-                    left: 'center'
-                },
-                tooltip: {
-                    trigger: 'item',
-                    formatter: '{a} <br/>{b}: {c} ({d}%)'
-                },
-                legend: {
-                    orient: 'vertical',
-                    right: 10,
-                    top: 20,
-                    data: this.machineId
-                },
-                series: [{
-                    name: 'Transaction Per Machine',
-                    type: 'pie',
-                    radius: ['50%', '70%'],
-                    avoidLabelOverlap: false,
-                    label: {
-                        show: false,
-                        position: 'center'
-                    },
-                    emphasis: {
-                        label: {
-                            show: true,
-                            fontSize: '30',
-                            fontWeight: 'bold'
-                        }
-                    },
-                    labelLine: {
-                        show: false
-                    },
-                    data: this.date
-                }]
+                 title: {
+        text: 'Top Sales',
+        subtext: 'Ecommerce',
+        left: 'center'
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c} ({d}%)'
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'left',
+        data:['Mobiles', 'Bikes', 'Cars', 'Laptops', 'Earphones']
+    },
+    series: [
+        {
+            name: 'Top Sales',
+            type: 'pie',
+            radius: '55%',
+            center: ['50%', '60%'],
+            data: [
+                 {value: 335, name: 'Mobiles'},
+                {value: 310, name: 'Bikes'},
+                {value: 234, name: 'Cars'},
+                {value: 135, name: 'Laptops'},
+                {value: 1548, name: 'Earphones'}
+                ],
+            emphasis: {
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
             },
             events: {
                 click: this.click
